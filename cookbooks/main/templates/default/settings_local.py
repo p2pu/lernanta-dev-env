@@ -6,6 +6,8 @@ import datetime
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+def show_toolbar(request)
+    return True
 
 # Include at least one admin who will receive the reports of abuse.
 ADMINS = (
@@ -73,6 +75,7 @@ INTERNAL_API_KEY = 'dmWfPniIMhkPRmiLosOEGmVVppfoyEFhpoIgElfyUpgxtJNCsDcdnFZIeYIU
 
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
+    'SHOW_TOOLBAR_CALLBACK': show_toolbar
 }
 
 INSTALLED_APPS += (
