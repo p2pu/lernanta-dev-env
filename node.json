@@ -1,0 +1,46 @@
+{
+  "run_list": [ "main::default", "mysql::server", "main::python", "main::lernanta"],
+  "base_packages": ["git-core", "bash-completion", "libssl-dev", "gettext", "make", "swig", "libxml2", "libxslt-dev"],
+  "ubuntu_python_packages": ["python-setuptools", "python-dev", "python-pip", "python-virtualenv", "python-lxml", "python-mysqldb", "python-imaging", "python-m2crypto", "python-iso8601", "python-pysqlite2"],
+  "pip_python_packages": {"virtualenvwrapper": "2.7"},
+
+  "users": {
+    "p2pu": {
+      "id": 2001,
+      "full_name": "p2pu",
+      "password": "$1$/pygvsfF$yMXi1v0zJy/Fer4QUiJOw1"
+    }
+  },
+
+  "groups": {
+    "vagrant": {
+      "gid": 201,
+      "members": ["p2pu", "vagrant"]
+    },
+    "sudo": {
+      "gid": 27,
+      "members": ["p2pu", "vagrant"]      
+    },
+    "admin": {
+      "gid": 999,
+      "members": ["p2pu", "vagrant"]      
+    }
+
+  },
+  "mysql": {
+    "server_root_password": "learnlernanta"
+  },
+  "lernanta_database": {
+        "NAME": "lernanta",
+        "ENGINE": "django.db.backends.mysql",
+        "HOST": "",
+        "PORT": "",
+        "USER": "root",
+        "PASSWORD": "learnlernanta",
+        "OPTIONS": {"init_command": "SET storage_engine=InnoDB"}
+  }
+
+
+}
+
+

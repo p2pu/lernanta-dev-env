@@ -1,0 +1,6 @@
+lernanta/*
+.vagrant
+*.DS_Store
+*.pyc
+*.swp
+

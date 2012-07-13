@@ -1,0 +1,7 @@
+
+
+
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^blogs\.p2pu\.org [NC]
+RewriteRule ^(.*)$ http://info.p2pu.org/$1 [R=301,L,QSA]
