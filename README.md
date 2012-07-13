@@ -18,13 +18,24 @@ Terminology:
  * VM / Guest Machine: The 'virtual machine' that is running inside vagrant. This is where the webserver lives.
  * Project Directory: The directory that you clone this project into.
 
-To Use:
+How to Use:
 ------
+ * vagrant resume to start the lernanta environment
+ * vagrant suspend to shutdown the lernanta environment
  * You can access the server from localhost:8001 from your host machine
  * You can ssh to the server by typing 'vagrant ssh' from the project directory
  * The lernanta directory is shared between the vm and the host. Use your favorite editor to edit the code in this directory and it will be reflected inside the vm. 
+ * More info here http://vagrantup.com/v1/docs/getting-started/index.html
 
 Tips:
 -------
  * vagrant ssh
- * tail -f lernanta/webserver.log
+ * tail -f /opt/lernanta/lernanta/webserver.log
+ 
+Troubleshooting:
+----------------
+ * If there is a problem:
+ * cd into the project directory
+ * vagrant destroy
+ * vagrant up
+ * Local modifications to your code will stay in the lernanta folder. 

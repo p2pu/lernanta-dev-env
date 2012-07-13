@@ -1,11 +1,5 @@
 #Virtualenv setup
 
-# directory "/home/docs/sites/" do
-#     owner "docs"
-#     group "docs"
-#     mode 0775
-# end
-
 script "Setup bashrc" do
   interpreter "bash"
   code <<-EOH
@@ -22,6 +16,11 @@ template "/home/p2pu/.lernanta" do
   mode 0644
 end
 
+# We need this .gitignore file so so that the lernanta directory stays in the git repo.
+# Git cannot have just empty folders in git so we need this file.
+# We need the folder setup for when vagrant sets up shared folders on boot
+# We delete the file here so that the directory is empty - git needs an empty
+# directory to clone into.
 file "/opt/lernanta/.gitignore" do
   action :delete
 end
@@ -118,6 +117,6 @@ bash "Run Server" do
   # user "p2pu"
   # group "p2pu"
   code <<-EOH
-    sudo su -l -c 'workon lernanta && python /opt/lernanta/lernanta/manage.py runserver 0.0.0.0:8000 > /dev/null &' p2pu
+    sudo su -l -c 'workon lernanta && python /opt/lernanta/lernanta/manage.py runserver 0.0.0.0:8000 >> /opt/lernanta/lernanta/runserver.log 2>&1 &' p2pu
   EOH
 end
