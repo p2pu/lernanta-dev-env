@@ -32,6 +32,14 @@ git "/opt/lernanta" do
   action :sync
 end
 
+bash "Switch git branch" do
+  # user "p2pu"
+  # group "p2pu"
+  returns [0, 1, 128]
+  cwd "/opt/lernanta"
+  code "git checkout -b master"
+end
+
 # When using vagrant, there shared settings in Vagrantfile override this
 directory "/opt/lernanta" do
   mode 0775
