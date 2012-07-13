@@ -23,7 +23,7 @@ How to Use:
  * vagrant resume to start the lernanta environment
  * vagrant suspend to shutdown the lernanta environment
  * You can access the server from localhost:8001 from your host machine
- * You can ssh to the server by typing 'vagrant ssh' from the project directory
+ * You can ssh to the server by typing 'vagrant ssh' **from top of the project directory**
  * The lernanta directory is shared between the vm and the host. Use your favorite editor to edit the code in this directory and it will be reflected inside the vm. 
  * If you need to execute a command on the command line, be sure to vagrant ssh into the VM first so it uses the VMs environment
  * More info here http://vagrantup.com/v1/docs/getting-started/index.html
