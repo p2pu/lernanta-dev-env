@@ -6,7 +6,7 @@ import datetime
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-def show_toolbar(request)
+def show_toolbar(request):
     return True
 
 # Include at least one admin who will receive the reports of abuse.
