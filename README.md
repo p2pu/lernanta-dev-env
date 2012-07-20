@@ -1,5 +1,4 @@
 
-
 ====================
 P2PU Development Environment
 ====================
@@ -32,6 +31,7 @@ Tips:
 -------
  * vagrant ssh
  * tail -f /opt/lernanta/lernanta/webserver.log
+ * There is a default admin user created username:adminuser and password:password123
  
 Troubleshooting:
 ----------------
