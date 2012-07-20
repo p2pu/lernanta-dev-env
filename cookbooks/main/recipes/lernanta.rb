@@ -114,8 +114,8 @@ bash "Make Database" do
   EOH
 end
 
-template "/opt/lernanta/lernanta/db_seed_data.sql" do
-  source "lernanta_seed.sql"
+template "/opt/lernanta/lernanta/db_seed_lernanta.sql" do
+  source "db_seed_lernanta.sql"
   mode 0644
   user "p2pu"
   group "p2pu"
@@ -125,7 +125,7 @@ bash "Seed Database" do
   # user "p2pu"
   # group "p2pu"
   returns [0, 1]
-  code "mysql lernanta -u root -plearnlernanta < /opt/lernanta/lernanta/db_seed_data.sql"
+  code "mysql lernanta -u root -plearnlernanta < /opt/lernanta/lernanta/db_seed_lernanta.sql"
 end
 
 bash "Generate Static HTML" do
