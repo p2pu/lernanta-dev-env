@@ -50,6 +50,7 @@ directory "/opt/lernanta" do
 end
 
 bash "Create database" do
+  returns [0, 1]
   code "mysqladmin -u root -p#{node[:mysql][:server_root_password]} create #{node[:lernanta_database][:NAME]}"
 end
 
