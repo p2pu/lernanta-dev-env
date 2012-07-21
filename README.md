@@ -12,13 +12,13 @@ Easy setup:
 4. cd to the project directory and type "vagrant up"
 
 Terminology:
------------
+------------
  * Host machine: Your computer that you are using now
  * VM / Guest Machine: The 'virtual machine' that is running inside vagrant. This is where the webserver lives.
  * Project Directory: The directory that you clone this project into.
 
 How to Use:
-------
+------------
  * vagrant resume to start the lernanta environment
  * vagrant suspend to shutdown the lernanta environment
  * You can access the server from localhost:8001 from your host machine
@@ -28,10 +28,15 @@ How to Use:
  * More info here http://vagrantup.com/v1/docs/getting-started/index.html
 
 Tips:
--------
+------------
  * vagrant ssh
  * tail -f /opt/lernanta/lernanta/webserver.log
  * There is a default admin user created username:adminuser and password:password123
+
+Notes/ Requirements:
+----------------------
+* 1.8 GB of disk space (which will be taken up by the virtual machine that contains the dev environment)
+* With all dependencies, the installation will download about 1GB of data/files  (Don't try this on a slow connection)
  
 Troubleshooting:
 ----------------
