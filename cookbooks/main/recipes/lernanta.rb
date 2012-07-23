@@ -29,7 +29,7 @@ git "/opt/lernanta" do
   repository "https://github.com/p2pu/lernanta.git"
   reference "master"
   revision "HEAD"
-  action :sync
+  action :checkout
 end
 
 bash "Switch git branch" do
