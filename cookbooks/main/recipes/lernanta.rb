@@ -91,6 +91,7 @@ allowed = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
 node[:secret_key] = secret_key
 
 template "/opt/lernanta/lernanta/settings_local.py" do
+  action :create_if_missing
   source "settings_local.py"
   mode 0644
   user "p2pu"
@@ -99,11 +100,19 @@ template "/opt/lernanta/lernanta/settings_local.py" do
               :secret_key => node[:secret_key] })
 end
 
-template "/opt/lernanta/lernanta/settings.py" do
-  source "settings.py"
-  mode 0644
-  user "p2pu"
-  group "p2pu"
+# Forget about the settings file for now. We only need to change settings_local.py
+# template "/opt/lernanta/lernanta/settings.py" do
+#   source "settings.py"
+#   mode 0644
+#   user "p2pu"
+#   group "p2pu"
+# end
+
+# To run the dbsync we need to comment out south
+bash "Updating settings.py for south" do
+  code <<-EOH
+    sed -i -e "s/'south',/#'south',/" /opt/lernanta/lernanta/settings.py
+  EOH
 end
 
 bash "Make Database" do
