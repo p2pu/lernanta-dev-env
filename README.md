@@ -9,7 +9,7 @@ Easy setup:
 2. Download and install Vagrant http://downloads.vagrantup.com/tags/v1.0.3
    - or alternatively run 'gem install vagrant' if you have a working ruby environment
 3. git clone http://github.com/p2pu/lernanta-dev-env.git
-4. cd to the project directory and type "vagrant up"
+4. cd to the project directory and type `vagrant up`
 
 Terminology:
 ------------
@@ -22,15 +22,15 @@ How to Use:
  * vagrant resume to start the lernanta environment
  * vagrant suspend to shutdown the lernanta environment
  * You can access the server from localhost:8001 from your host machine
- * You can ssh to the server by typing 'vagrant ssh' **from top of the project directory**
+ * You can ssh to the server by typing `vagrant ssh`
  * The lernanta directory is shared between the vm and the host. Use your favorite editor to edit the code in this directory and it will be reflected inside the vm. 
  * If you need to execute a command on the command line, be sure to vagrant ssh into the VM first so it uses the VMs environment
  * More info here http://vagrantup.com/v1/docs/getting-started/index.html
 
 Tips:
 ------------
- * vagrant ssh
- * tail -f /opt/lernanta/lernanta/webserver.log
+ * `vagrant ssh`
+ * `tail -f /opt/lernanta/lernanta/webserver.log`
  * There is a default admin user created username:adminuser and password:password123
 
 Notes/ Requirements:
@@ -42,6 +42,6 @@ Troubleshooting:
 ----------------
  * If there is a problem:
  * cd into the project directory
- * vagrant destroy
- * vagrant up
+ * `vagrant destroy`
+ * `vagrant up`
  * Local modifications to your code will stay in the lernanta folder. 
