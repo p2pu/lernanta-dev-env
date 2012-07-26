@@ -30,15 +30,18 @@ git "/opt/lernanta" do
   reference "master"
   revision "HEAD"
   action :checkout
+  not_if do   # Only do this if we have allready checked out
+    File.exists? "/opt/lernanta/.git"
+  end
 end
 
-bash "Switch git branch" do
-  # user "p2pu"
-  # group "p2pu"
-  returns [0, 1, 128]
-  cwd "/opt/lernanta"
-  code "git checkout -b master"
-end
+# bash "Switch git branch" do
+#   # user "p2pu"
+#   # group "p2pu"
+#   returns [0, 1, 128]
+#   cwd "/opt/lernanta"
+#   code "git checkout -b master"
+# end
 
 # When using vagrant, there shared settings in Vagrantfile override this
 directory "/opt/lernanta" do
