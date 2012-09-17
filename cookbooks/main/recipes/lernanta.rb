@@ -23,6 +23,9 @@ end
 # directory to clone into.
 file "/opt/lernanta/.gitignore" do
   action :delete
+  not_if do   # Only do this if we have allready checked out
+    File.exists? "/opt/lernanta/.git"
+  end
 end
 
 git "/opt/lernanta" do
@@ -80,8 +83,9 @@ end
 bash "Install Pip Dependencies" do
   # user "p2pu"
   # group "p2pu"
-  retries 10
+  #retries 10
   timeout 50000
+  returns [0, 1]
   code <<-EOH
     sudo su -l -c 'workon lernanta && pip install -r /opt/lernanta/lernanta/requirements/dev.txt' p2pu
   EOH
