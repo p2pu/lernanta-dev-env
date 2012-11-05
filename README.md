@@ -1,4 +1,3 @@
-
 ====================
 P2PU Development Environment
 ====================
@@ -23,8 +22,9 @@ How to Use:
  * vagrant suspend to shutdown the lernanta environment
  * You can access the server from localhost:8001 from your host machine
  * You can ssh to the server by typing `vagrant ssh`
- * The lernanta directory is shared between the vm and the host. Use your favorite editor to edit the code in this directory and it will be reflected inside the vm. 
- * If you need to execute a command on the command line, be sure to vagrant ssh into the VM first so it uses the VMs environment
+ * The lernanta directory is shared between the vm and the host. Use your favorite editor to edit the code in this directory and it will be reflected inside the vm (Django will reload files automatically). 
+ * The lernanta directory is pulled from http://github.com/p2pu/lernanta. To update to the latest code, use git pull origin master.
+  * If you need to execute a command on the command line, be sure to vagrant ssh into the VM first so it uses the VMs environment
  * More info here http://vagrantup.com/v1/docs/getting-started/index.html
 
 Tips:
