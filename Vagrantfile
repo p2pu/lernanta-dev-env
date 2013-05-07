@@ -1,18 +1,42 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+settings = {
+  :box => 'p2pu',
+  :box_url => "http://files.vagrantup.com/precise32.box"
+}
+
+local_settings = "#{__FILE__}.local"
+if File.exists?(local_settings)
+  eval File.read(local_settings)
+end
+
+def provision vm
+  # Enable provisioning with chef solo, specifying a cookbooks path (relative
+  # to this Vagrantfile), and adding some recipes and/or roles.
+  vm.provision :chef_solo do |chef|
+    chef.cookbooks_path = "cookbooks"
+    chef.add_recipe "main"
+    # chef.add_role "web"
+
+    # You may also specify custom JSON attributes:
+    # chef.json = { :mysql_password => "foo" }
+    chef.json.merge! JSON.parse(File.read(File.join(File.dirname(File.expand_path(__FILE__)), 'node.json')))
+  end
+end
+
 Vagrant::Config.run do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "p2pu"
+  config.vm.box = settings[:box]
   # config.vm.box = "debian-squeeze"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+  config.vm.box_url = settings[:box_url]
   # config.vm.box_url = "http://mathie-vagrant-boxes.s3.amazonaws.com/debian_squeeze_32.box"
 
   # Boot with a GUI so you can see the screen. (Default is headless)
@@ -72,17 +96,7 @@ Vagrant::Config.run do |config|
   #   puppet.manifest_file  = "base.pp"
   # end
 
-  # Enable provisioning with chef solo, specifying a cookbooks path (relative
-  # to this Vagrantfile), and adding some recipes and/or roles.
-  config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = "cookbooks"
-    chef.add_recipe "main"
-    # chef.add_role "web"
-
-    # You may also specify custom JSON attributes:
-    # chef.json = { :mysql_password => "foo" }
-    chef.json.merge! JSON.parse(File.read(File.join(File.dirname(File.expand_path(__FILE__)), 'node.json')))
-  end
+  provision config.vm
 
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
@@ -106,4 +120,20 @@ Vagrant::Config.run do |config|
   # chef-validator, unless you changed the configuration.
   #
   #   chef.validation_client_name = "ORGNAME-validator"
+end
+
+Vagrant.configure("2") do |config|
+  config.vm.box = settings[:box]
+  config.vm.box_url = settings[:box_url]
+
+  config.vm.synced_folder "./lernanta", "/opt/lernanta"
+
+  config.vm.network :forwarded_port, host: 80, guest: 8080
+  config.vm.network :forwarded_port, host: 8000, guest: 8001
+
+  config.vm.provider :virtualbox do |vbox|
+    vbox.customize(["modifyvm", :id, "--nictype1", "Am79C973"])
+  end
+
+  provision config.vm
 end
