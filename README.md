@@ -5,7 +5,7 @@ P2PU Development Environment
 Easy setup:
 -----------
 1. Download and install VirtualBox https://www.virtualbox.org/wiki/Downloads
-2. Download and install Vagrant http://downloads.vagrantup.com/tags/v1.0.3
+2. Download and install Vagrant http://downloads.vagrantup.com/tags/v1.2.2
    - or alternatively run 'gem install vagrant' if you have a working ruby environment
 3. git clone http://github.com/p2pu/lernanta-dev-env.git
 4. cd to the project directory and type `vagrant up`
