@@ -1,5 +1,5 @@
 {
-  "run_list": [ "main::default", "mysql::server", "main::python", "main::lernanta"],
+  "run_list": [ "recipe[main::default]", "recipe[mysql::server]", "recipe[mysql::client]", "recipe[main::python]", "recipe[main::lernanta]"],
   "base_packages": ["git-core", "bash-completion", "libssl-dev", "gettext", "make", "swig", "libxml2", "libxslt-dev"],
   "ubuntu_python_packages": ["python-setuptools", "python-dev", "python-pip", "python-virtualenv", "python-lxml", "python-mysqldb", "python-imaging", "python-m2crypto", "python-iso8601", "python-pysqlite2"],
   "pip_python_packages": {"virtualenvwrapper": "2.7"},
@@ -18,11 +18,11 @@
     },
     "sudo": {
       "gid": 27,
-      "members": ["p2pu", "vagrant"]      
+      "members": ["p2pu", "vagrant"]
     },
     "admin": {
       "gid": 999,
-      "members": ["p2pu", "vagrant"]      
+      "members": ["p2pu", "vagrant"]
     }
 
   },

@@ -16,7 +16,7 @@ def provision vm
   # to this Vagrantfile), and adding some recipes and/or roles.
   vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "cookbooks"
-    chef.add_recipe "main"
+    # chef.add_recipe "main"
     # chef.add_role "web"
 
     # You may also specify custom JSON attributes:
