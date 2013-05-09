@@ -135,13 +135,14 @@ template "/opt/lernanta/lernanta/db_seed_lernanta.sql" do
   mode 0644
   user "p2pu"
   group "p2pu"
+  action :create_if_missing
 end
 
 bash "Seed Database" do
   # user "p2pu"
   # group "p2pu"
   returns [0, 1]
-  code "mysql lernanta -u root -plearnlernanta < /opt/lernanta/lernanta/db_seed_lernanta.sql"
+  code "mysql lernanta -u root -p#{node[:mysql][:server_root_password]} < /opt/lernanta/lernanta/db_seed_lernanta.sql"
 end
 
 bash "Generate Static HTML" do
