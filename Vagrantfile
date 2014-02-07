@@ -64,7 +64,7 @@ Vagrant::Config.run do |config|
 
   # the uid is for the p2pu user. gid is the vagrant group
   config.vm.share_folder("lernanta", "/opt/lernanta", "./lernanta",
-                         :extra => 'uid=2001,gid=201,dmode=775,fmode=775')
+                         :mount_options => ['uid=2001', 'gid=201', 'dmode=775', 'fmode=775'])
 
   # config.ssh.username = "p2pu"
   # config.ssh.timeout = 500
